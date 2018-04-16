@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Tank.h"
+#include "DrawDebugHelpers.h"
 
 
 // Sets default values
@@ -23,6 +24,12 @@ void ATank::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+}
+
+void ATank::AimAt(FVector HitLocation) {
+	/// Aim at target location
+	auto OurTankName = GetName();
+	UE_LOG(LogTemp, Warning, TEXT("%s aiming at %s"), *OurTankName, *HitLocation.ToString())
 }
 
 // Called to bind functionality to input
