@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "Tank.h"
-#include "DrawDebugHelpers.h"
+#include "TankAimingComponent.h"
 
 
 // Sets default values
@@ -10,6 +10,7 @@ ATank::ATank()
  	// Set this pawn to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	TankAimingComponent = CreateDefaultSubobject<UTankAimingComponent>(FName("Aiming Component"));
 }
 
 // Called when the game starts or when spawned
@@ -28,8 +29,7 @@ void ATank::Tick(float DeltaTime)
 
 void ATank::AimAt(FVector HitLocation) {
 	/// Aim at target location
-	auto OurTankName = GetName();
-	UE_LOG(LogTemp, Warning, TEXT("%s aiming at %s"), *OurTankName, *HitLocation.ToString())
+	TankAimingComponent->AimAt(HitLocation);
 }
 
 // Called to bind functionality to input
